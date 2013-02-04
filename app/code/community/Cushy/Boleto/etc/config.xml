@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- /*========================================================================================================================================================= 
+	* * PROJETO Cushy Boleto V2.0 * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+	* Modulo Cushy Boleto V2.0. * site do projeto: http://onestepcheckout.com.br/boletos-bancario-com-cushy-para-magento-free 
+	* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+	* * * * Mantenedor do Projeto: * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+	* * Baseado no modulo original Cushy_Boleto de Renan Goncalves <renan.saddam@gmail.com> 
+	e nas alteraçoes feitas por Rafael Camargo <desbloqueio@terra.com.br> * * 
+	Deivison Arthur Lemos Serpa * deivison.arthur@gmail.com * www.deivison.com.br 
+	* (21)9203-8986 * * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+	* * * * GOSTOU DO MODULO? * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+	* Se voce gostou, se foi util para voce, se fez voce economizar aquela grana 
+	pois estava prestes a pagar caro por aquele modulo pago, pois nao achava 
+	um * solucao gratuita que te atendesse e queira prestigiar o trabalho feito 
+	efetuando uma doacao de qualquer valor, nao vou negar e vou ficar grato, 
+	voce * pode fazer isso visitando a pagina do projeto em: http://onestepcheckout.com.br/boletos-bancario-com-cushy-para-magento-free 
+	* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+	* /*=========================================================================================================================================================*/ -->
+<config>
+	<modules>
+		<Cushy_Boleto>
+			<version>2.0.0</version>
+			<depends>
+				<Mage_Payment />
+			</depends>
+		</Cushy_Boleto>
+	</modules>
+	<global>
+		<models>
+			<boleto>
+				<class>Cushy_Boleto_Model</class>
+			</boleto>
+		</models>
+		<resources>
+			<connection>
+				<use>core_setup</use>
+			</connection>
+		</resources>
+	</global>
+	<frontend>
+		<routers>
+			<boleto>
+				<use>standard</use>
+				<args>
+					<module>Cushy_Boleto</module>
+					<frontName>boleto</frontName>
+				</args>
+			</boleto>
+		</routers>
+	</frontend>
+	<default>
+		<payment>
+			<boleto_bancario>
+				<active>0</active>
+				<model>Cushy_Boleto_Model_standard</model>
+				<banconome>santander_banespa</banconome>
+				<title>Boleto Bancário</title>
+				<vencimento>5</vencimento>
+				<instrucoes_boleto>- Não receber após vencimento.
+					- Não receber
+					pagamento em cheque.
+				</instrucoes_boleto>
+				<informacoes>- Pagamento do pedido efetuado na loja XXXXXX.
+					- Nº do
+					pedido: #%s, para maiores detalhes e 2ª via do boleto acesse
+					o
+					histórico do seu pedido.
+					- Em 2 (dois) dias seu pagamento será
+					automaticamente acusado pelo
+					nosso sistema.
+				</informacoes>
+				<especie>R$</especie>
+				<aceite>N</aceite>
+				<valor_adicional>0</valor_adicional>
+			</boleto_bancario>
+		</payment>
+	</default>
+</config>

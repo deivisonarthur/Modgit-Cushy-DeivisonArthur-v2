@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Cushy_Boleto>
+			<active>true</active>
+			<codePool>community</codePool>
+		</Cushy_Boleto>
+	</modules>
+</config>

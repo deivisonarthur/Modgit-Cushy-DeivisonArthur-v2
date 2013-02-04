@@ -1,0 +1,47 @@
+
+<div class="page-head">
+	<h3><?php echo $this->__('Seu pedido foi recebido com sucesso') ?></h3>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml()?>
+<p>
+	<strong><?php echo $this->__('Obrigado pela sua compra!') ?></strong>
+</p>
+<p>
+ <?php if ($this->canPrint()) :?>
+  <?php echo $this->__('Seu pedido # é: <a href="%s">%s</a>', $this->getViewOrderUrl(), $this->getOrderId()) ?>.<br />
+  <?php  else :?>
+  <?php echo $this->__('Seu pedido # é: %s', $this->getOrderId()) ?>.<br />
+  <?php endif;?>
+
+    <?php echo $this->__('Você receberá uma cópia do seu pedido com detalhes por email e um link para acompanhamento.') ?><br />
+    <?php if ($this->canPrint()) :?>
+    <?php echo $this->__('Clique <a href="%s" onclick="this.target=\'_blank\'">aqui para imprimir</a> a cópia da confirmação de seu pedido.', $this->getPrintUrl())?>
+    <?php endif;?>
+    <?php echo $this->getChildHtml()?>
+
+  
+  <?php
+		$order = Mage::getModel ( 'sales/order' );
+		$order->loadByIncrementId ( $this->getOrderId () );
+		$method = $order->getPayment ()->getMethod ();
+		if (strpos ( $method, 'boleto' ) !== false) {
+			echo $this->__ ( '<div align="center"><a href="%s" onclick="this.target=\'_blank\'">Clique aqui para imprimir o boleto bancário.<br/><img src="%s"/></a></div>', $this->getUrl ( 'boleto/standard/view/order_id/' . $order->getId () ), $this->getSkinUrl ( 'images/boleto.gif' ) );
+		}
+		?>
+</p>
+
+<div class="buttons-set">
+	<button type="button" class="button" target="boleto"
+		onclick="abreJanelaBoleto(true)">
+		<span><span>Exibir Boleto</span></span>
+	</button>
+</div>
+
+<div class="button-set">
+	<button class="form-button"
+		onclick="window.location='<?php echo $this->getUrl() ?>'">
+		<span><?php echo $this->__('Continue Shopping') ?></span>
+	</button>
+</div>
+
+
