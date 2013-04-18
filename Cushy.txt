@@ -1,0 +1,20 @@
+OBS: 
+
+*Esse módulo do Cushy funciona a admin com o compilador ligado!
+*O layout layout_cef.php da Caixa Economica foi atualizado!
+*Add o botão de impressão na tela de sucesso!
+*Add o link de impressão do boleto na admin!
+
+*Para adicionar o link de impressão da 2 via do boleto, edite o arquivo /app/locale/pt_BR/template/email/sales/order_new.phtml, que é o template de email padrão para novas compras, procure por:
+{{var payment_html}} 
+Coloque abaixo dele: 
+{{block type=’core/template’ area=’frontend’ template=’boletonoemail/boleto.phtml’ order=$order}} 
+Assim irá add o link de impressão do boleto no email enviado para o cliente caso o pagamento seja via boleto.
+
+Projeto baseado no Cushy Boleto
+
+
+Deivison Arthur 
+deivison.arthur@gmail.com
+21 9203-8986
+skype: deivisonarthur
