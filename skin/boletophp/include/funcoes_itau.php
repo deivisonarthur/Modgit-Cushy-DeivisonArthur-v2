@@ -1,11 +1,11 @@
 <?php
 // +----------------------------------------------------------------------+
-// | BoletoPhp - Versão Beta                                              |
+// | BoletoPhp - Versï¿½o Beta                                              |
 // +----------------------------------------------------------------------+
-// | Este arquivo está disponível sob a Licença GPL disponível pela Web   |
+// | Este arquivo estï¿½ disponï¿½vel sob a Licenï¿½a GPL disponï¿½vel pela Web   |
 // | em http://pt.wikipedia.org/wiki/GNU_General_Public_License           |
-// | Você deve ter recebido uma cópia da GNU Public License junto com     |
-// | esse pacote; se não, escreva para:                                   |
+// | Vocï¿½ deve ter recebido uma cï¿½pia da GNU Public License junto com     |
+// | esse pacote; se nï¿½o, escreva para:                                   |
 // |                                                                      |
 // | Free Software Foundation, Inc.                                       |
 // | 59 Temple Place - Suite 330                                          |
@@ -13,17 +13,17 @@
 // +----------------------------------------------------------------------+
 
 // +----------------------------------------------------------------------+
-// | Originado do Projeto BBBoletoFree que tiveram colaborações de Daniel |
+// | Originado do Projeto BBBoletoFree que tiveram colaboraï¿½ï¿½es de Daniel |
 // | William Schultz e Leandro Maniezo que por sua vez foi derivado do	  |
-// | PHPBoleto de João Prado Maia e Pablo Martins F. Costa				  |
+// | PHPBoleto de Joï¿½o Prado Maia e Pablo Martins F. Costa				  |
 // | 																	  |
 // | Se vc quer colaborar, nos ajude a desenvolver p/ os demais bancos :-)|
 // | Acesse o site do Projeto BoletoPhp: www.boletophp.com.br             |
 // +----------------------------------------------------------------------+
 
 // +----------------------------------------------------------------------+
-// | Equipe Coordenação Projeto BoletoPhp: <boletophp@boletophp.com.br>   |
-// | Desenvolvimento Boleto Itaú: Glauber Portella		                  |
+// | Equipe Coordenaï¿½ï¿½o Projeto BoletoPhp: <boletophp@boletophp.com.br>   |
+// | Desenvolvimento Boleto Itaï¿½: Glauber Portella		                  |
 // +----------------------------------------------------------------------+
 
 
@@ -34,15 +34,29 @@ $fator_vencimento = fator_vencimento($dadosboleto["data_vencimento"]);
 
 //valor tem 10 digitos, sem virgula
 $valor = formata_numero($dadosboleto["valor_boleto"],10,0,"valor");
-//agencia é 4 digitos
+//agencia ï¿½ 4 digitos
 $agencia = formata_numero($dadosboleto["agencia"],4,0);
-//conta é 5 digitos + 1 do dv
+//conta ï¿½ 5 digitos + 1 do dv
 $conta = formata_numero($dadosboleto["conta"],5,0);
 $conta_dv = formata_numero($dadosboleto["conta_dv"],1,0);
 //carteira 175
 $carteira = $dadosboleto["carteira"];
+
+
+
+
+
 //nosso_numero no maximo 8 digitos
-$nnum = formata_numero($dadosboleto["nosso_numero"],8,0);
+
+//correcao da formataÃ§Ã£o do erro no boleto enviado por Thiago <thiago@4media.com.br>
+//$nnum = formata_numero($dadosboleto["nosso_numero"],8,0);
+
+//agora fica assim: Nosso_numero no maximo 8 digitos / Testado utilizando a carteira 176
+$nnum = formata_numero($dadosboleto["nosso_numero"]-90000000,8,0);
+
+
+
+
 
 $codigo_barras = $codigobanco.$nummoeda.$fator_vencimento.$valor.$carteira.$nnum.modulo_10($agencia.$conta.$carteira.$nnum).$agencia.$conta.modulo_10($agencia.$conta).'000';
 // 43 numeros para o calculo do digito verificador
@@ -60,7 +74,7 @@ $dadosboleto["nosso_numero"] = $nossonumero;
 $dadosboleto["codigo_banco_com_dv"] = $codigo_banco_com_dv;
 
 
-// FUNÇÕES
+// FUNï¿½ï¿½ES
 // Algumas foram retiradas do Projeto PhpBoleto e modificadas para atender as particularidades de cada banco
 
 function digitoVerificador_barra($numero) {
@@ -174,7 +188,7 @@ src=imagens/p.png width=<?php echo $largo?> height=<?php echo $altura?> border=0
 src=imagens/b.png width=<?php echo $fino?> height=<?php echo $altura?> border=0><img 
 src=imagens/p.png width=<?php echo 1?> height=<?php echo $altura?> border=0> 
   <?php
-} //Fim da função
+} //Fim da funï¿½ï¿½o
 
 function esquerda($entra,$comp){
 	return substr($entra,0,$comp);
@@ -221,7 +235,7 @@ function modulo_10($num) {
             // pega cada numero isoladamente
             $numeros[$i] = substr($num,$i-1,1);
             // Efetua multiplicacao do numero pelo (falor 10)
-            // 2002-07-07 01:33:34 Macete para adequar ao Mod10 do Itaú
+            // 2002-07-07 01:33:34 Macete para adequar ao Mod10 do Itaï¿½
             $temp = $numeros[$i] * $fator; 
             $temp0=0;
             foreach (preg_split('//',$temp,-1,PREG_SPLIT_NO_EMPTY) as $k=>$v){ $temp0+=$v; }
@@ -235,7 +249,7 @@ function modulo_10($num) {
             }
         }
 		
-        // várias linhas removidas, vide função original
+        // vï¿½rias linhas removidas, vide funï¿½ï¿½o original
         // Calculo do modulo 10
         $resto = $numtotal10 % 10;
         $digito = 10 - $resto;
@@ -252,22 +266,22 @@ function modulo_11($num, $base=9, $r=0)  {
      *   Autor:
      *           Pablo Costa <pablo@users.sourceforge.net>
      *
-     *   Função:
+     *   Funï¿½ï¿½o:
      *    Calculo do Modulo 11 para geracao do digito verificador 
      *    de boletos bancarios conforme documentos obtidos 
      *    da Febraban - www.febraban.org.br 
      *
      *   Entrada:
-     *     $num: string numérica para a qual se deseja calcularo digito verificador;
+     *     $num: string numï¿½rica para a qual se deseja calcularo digito verificador;
      *     $base: valor maximo de multiplicacao [2-$base]
      *     $r: quando especificado um devolve somente o resto
      *
-     *   Saída:
+     *   Saï¿½da:
      *     Retorna o Digito verificador.
      *
-     *   Observações:
-     *     - Script desenvolvido sem nenhum reaproveitamento de código pré existente.
-     *     - Assume-se que a verificação do formato das variáveis de entrada é feita antes da execução deste script.
+     *   Observaï¿½ï¿½es:
+     *     - Script desenvolvido sem nenhum reaproveitamento de cï¿½digo prï¿½ existente.
+     *     - Assume-se que a verificaï¿½ï¿½o do formato das variï¿½veis de entrada ï¿½ feita antes da execuï¿½ï¿½o deste script.
      */                                        
 
     $soma = 0;
@@ -302,7 +316,7 @@ function modulo_11($num, $base=9, $r=0)  {
     }
 }
 
-// Alterada por Glauber Portella para especificação do Itaú
+// Alterada por Glauber Portella para especificaï¿½ï¿½o do Itaï¿½
 function monta_linha_digitavel($codigo) {
 		// campo 1
         $banco    = substr($codigo,0,3);
