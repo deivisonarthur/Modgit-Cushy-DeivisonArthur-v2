@@ -52,22 +52,16 @@
 		<payment>
 			<boleto_bancario>
 				<active>0</active>
-				<model>Cushy_Boleto_Model_standard</model>
+				<model>Cushy_Boleto_Model_Standard</model>
 				<banconome>santander_banespa</banconome>
 				<title>Boleto Bancário</title>
 				<vencimento>5</vencimento>
-				<instrucoes_boleto>- Não receber após vencimento.
-					- Não receber
-					pagamento em cheque.
+				<instrucoes_boleto>- Não receber após vencimento. 
+				- Não receber pagamento em cheque.
 				</instrucoes_boleto>
 				<informacoes>- Pagamento do pedido efetuado na loja XXXXXX.
-					- Nº do
-					pedido: #%s, para maiores detalhes e 2ª via do boleto acesse
-					o
-					histórico do seu pedido.
-					- Em 2 (dois) dias seu pagamento será
-					automaticamente acusado pelo
-					nosso sistema.
+				- Nº do pedido: #%s, para maiores detalhes e 2ª via do boleto acesse o histórico do seu pedido.
+				- Em 2 (dois) dias seu pagamento será automaticamente acusado pelo nosso sistema.
 				</informacoes>
 				<especie>R$</especie>
 				<aceite>N</aceite>
