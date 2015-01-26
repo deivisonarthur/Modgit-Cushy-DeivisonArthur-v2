@@ -1,0 +1,35 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category   design_default
+ * @package    Mage
+ * @copyright  Copyright (c) 2004-2007 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<?php
+//Pega o valor total para a simulação 
+//$total = Mage::getSingleton('checkout/session')->getQuote()->getGrandTotal();
+?>
+
+    <?php $_code=$this->getMethodCode() ?>
+    <ul id="payment_form_<?php echo $_code ?>" class="form-list" style="display:none">
+		<!--<li><strong>Valor total &eacute; de R$<?php //echo number_format($total*0.95, 2, ",", "."); ?> (com desconto de 5%) &agrave; vista. O produto ser&aacute; enviado apenas ap&oacute;s confirma&ccedil;&atilde;o do pagamento.</strong>
+		</li>
+		<li>
+			Desconto de 5% para compras em boleto banc&aacute;rio.
+		</li>-->
+        <li>Ap&oacute;s Finalizar o Pedido aparecer&aacute; o link para impress&atilde;o do Boleto. Tamb&eacute;m poder&aacute; imprimir em Sua Conta.
+		</li>
+    </ul>
