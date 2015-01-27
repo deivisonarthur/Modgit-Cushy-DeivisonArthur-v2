@@ -36,6 +36,11 @@
 				<use>core_setup</use>
 			</connection>
 		</resources>
+		<blocks>
+            <boleto>
+                <class>Cushy_Boleto_Block</class>
+            </boleto>
+        </blocks>
 	</global>
 	<frontend>
 		<routers>

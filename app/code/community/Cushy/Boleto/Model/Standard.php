@@ -16,6 +16,9 @@
  */
 class Cushy_Boleto_Model_Standard extends Mage_Payment_Model_Method_Abstract {
 	protected $_code = 'boleto_bancario';
+	
+	protected $_formBlockType = 'boleto/form';
+
 	public function prepareValues() {
 		$order = Mage::registry ( 'current_order' );
 		$address = $order->getBillingAddress ();
